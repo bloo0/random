@@ -1,0 +1,23 @@
+<html>
+   <body>
+      <h1>Hello Random</h1>
+
+      <h3>hello service is up and running</h3>
+      <form action="" method="POST">
+         <br>
+         <input type="submit" name="submit_button" value="Test Welcome Service">
+      </form>
+
+        {% for category, message in get_flashed_messages(with_categories=true) %}
+        <ul>
+            <li>
+            <div style="color: {{ category }}">{{ message }}</div>
+            </li>
+            <form action="" method="POST">
+         <br>
+         <input type="submit" name="submit_button" value="reset">
+          </form>
+        </ul>
+      {% endfor %}
+   </body>
+</html>

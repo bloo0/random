@@ -1,0 +1,61 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: hello
+  name: hello
+  namespace: prd
+spec:
+  type: NodePort
+  ports:
+    - name: "5050"
+      port: 5050
+      targetPort: 5050
+      nodePort: 30100
+  selector:
+    app: hello
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: hello
+  name: hello
+  namespace: prd
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  selector:
+    matchLabels:
+      app: hello
+  template:
+    metadata:
+      labels:
+        app: hello
+    spec:
+      nodeSelector:
+        purpose: applications
+      restartPolicy: Always
+      containers:
+        - envFrom:
+            - configMapRef:
+                name: env-hello
+            #- secretRef:
+            #    name: secrets-hello
+          image: AWS_ACCOUNT_ID.dkr.ecr.ap-southeast-1.amazonaws.com/hello:build-e42594d7-a30e-43f1-91d0-f0b360d875a0
+          imagePullPolicy: IfNotPresent
+          name: hello
+          ports:
+            - containerPort: 5050
+          resources:
+            limits:
+              cpu: 1024m
+              memory: 2Gi
+            requests:
+              cpu: 256m
+              memory: 1Gi
