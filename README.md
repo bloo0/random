@@ -113,34 +113,34 @@ Current workflows will do the following:
 #### IaC: Migrate to AWS CDK
 
 Here's why you might opt for AWS CDK over Terraform:
-### 1. Programming Language Flexibility
+1. Programming Language Flexibility
 
 - **AWS CDK**: Allows you to define your cloud infrastructure using familiar programming languages such as TypeScript, Python, Java, and C#. This can make the transition to IaC easier for teams already proficient in these languages, allowing for more complex logic, reusable components, and leveraging existing libraries and tools.
 - **Terraform**: Uses its own domain-specific language, HCL (HashiCorp Configuration Language). While HCL is designed to be readable and easy to write, teams not familiar with it will have a learning curve. It doesn't allow the use of conventional programming languages directly, which might limit the ability to apply traditional software development practices and tools.
 
-### 2. Integration with AWS Services
+2. Integration with AWS Services
 
 - **AWS CDK**: Being an AWS-native tool, CDK is often quicker to support new AWS features and services. It's deeply integrated into the AWS ecosystem, offering a smoother experience for AWS-centric infrastructure setups. CDK applications can directly utilize AWS best practices, and the AWS Construct Library provides high-level components that pre-configure cloud resources with sensible defaults.
 - **Terraform**: While Terraform provides comprehensive support for AWS, there can be a delay in supporting the latest AWS features compared to CDK. Terraform's provider model is extensible and supports multiple cloud providers, but this broad focus might sometimes result in a lag for the newest service features or integrations.
 
-### 3. State Management
+3. State Management
 
 - **AWS CDK**: The state of your infrastructure is managed by AWS CloudFormation under the hood, which means you're leveraging AWS's native deployment and state tracking mechanism. This can simplify operations for teams already familiar with CloudFormation but might introduce complexity for those new to it.
 - **Terraform**: Manages its own state and offers flexible back-end options for state storage, including local files, cloud storage, or Terraform Cloud. This allows for more control over state management and sharing but requires careful handling to avoid state conflicts and ensure security.
 
-### 4. Deployment and Drift Detection
+4. Deployment and Drift Detection
 
 - **AWS CDK**: Since it uses CloudFormation, CDK benefits from CloudFormation's deployment capabilities and drift detection features. This can be particularly useful for detecting and managing changes that occur outside of the IaC process.
 - **Terraform**: Also offers drift detection capabilities and can plan and apply infrastructure changes in a predictable manner. Terraform's state management plays a crucial role in tracking and applying changes.
 
-### 5. Ecosystem and Community
+5. Ecosystem and Community
 
 - **AWS CDK**: While growing rapidly, the community around CDK is smaller compared to Terraform. However, being an AWS product, it has strong documentation and support directly from AWS, making it a reliable choice for AWS-focused projects.
 - **Terraform**: Has a large and active community, extensive documentation, and a wide range of third-party tools, integrations, and providers. This can be a significant advantage for cross-cloud or multi-cloud environments and for finding solutions to common problems.
 
 
 
-#### Use Helm Charts
+### Use Helm Charts
 While plain YAML files can be sufficient for simple applications or those new to Kubernetes, Helm charts offer a more scalable, manageable, and efficient approach for deploying and managing applications as they grow in complexity. Helm's approach to package management, templating, and release management provides significant advantages in real-world Kubernetes environments. Here's why Helm charts are often preferred:
 
 **Template Management**: Helm charts allow you to use templating for your Kubernetes manifests. This means you can define a template for your resources and then use values to customize those resources for different environments (development, staging, production, etc.). Templating reduces duplication and simplifies the management of configurations that vary between deployments.
@@ -157,7 +157,7 @@ While plain YAML files can be sufficient for simple applications or those new to
 
 
 
-#### Why use self-managed nodes
+### Why use self-managed nodes
 It's a strategic choice that need more control and customization over our Kubernetes environment. While EKS offers managed node groups, which simplify the process of running Kubernetes by automating tasks such as updates and scaling, there are several reasons why opt for self-managed nodes:
 
 1. **Customization**: Self-managed nodes offer more flexibility in terms of the underlying EC2 instances. You have the freedom to choose from a wider range of instance types, sizes, and configurations. This is particularly useful for workloads that require specific CPU, GPU, or memory configurations not supported by the managed node groups.
